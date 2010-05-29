@@ -1,0 +1,5 @@
+;(require 'asdf)
+;(require 'asdf-install)
+;(push #p"/Documents/weblocks-stable/" asdf:*central-registry*)
+;(push #p"~/Sites/mwl/" asdf:*central-registry*)
+;(require :weblocks-scripts)
