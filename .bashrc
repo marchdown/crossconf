@@ -1,126 +1,14 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-
-txtblk='\033[0;30m' # Black - Regular
-txtred='\033[0;31m' # Red
-txtgrn='\033[0;32m' # Green
-txtylw='\033[0;33m' # Yellow
-txtblu='\033[0;34m' # Blue
-txtpur='\033[0;35m' # Purple
-txtcyn='\033[0;36m' # Cyan
-txtwht='\033[0;37m' # White
-bldblk='\033[1;30m' # Black - Bold
-bldred='\033[1;31m' # Red
-bldgrn='\033[1;32m' # Green
-bldylw='\033[1;33m' # Yellow
-bldblu='\033[1;34m' # Blue
-bldpur='\033[1;35m' # Purple
-bldcyn='\033[1;36m' # Cyan
-bldwht='\033[1;37m' # White
-unkblk='\033[4;30m' # Black - Underline
-undred='\033[4;31m' # Red
-undgrn='\033[4;32m' # Green
-undylw='\033[4;33m' # Yellow
-undblu='\033[4;34m' # Blue
-undpur='\033[4;35m' # Purple
-undcyn='\033[4;36m' # Cyan
-undwht='\033[4;37m' # White
-bakblk='\033[40m'   # Black - Background
-bakred='\033[41m'   # Red
-badgrn='\033[42m'   # Green
-bakylw='\033[43m'   # Yellow
-bakblu='\033[44m'   # Blue
-bakpur='\033[45m'   # Purple
-bakcyn='\033[46m'   # Cyan
-bakwht='\033[47m'   # White
-txtrst='\033[m'   # Text Reset
-echo 'first blockof colors set'
-
-MITSUHIKOS_DEFAULT_COLOR="[00m"
-MITSUHIKOS_GRAY_COLOR="[37m"
-MITSUHIKOS_PINK_COLOR="[35m"
-MITSUHIKOS_GREEN_COLOR="[32m"
-MITSUHIKOS_ORANGE_COLOR="[33m"
-MITSUHIKOS_RED_COLOR="[31m"
-
-echo 'second blockof colors set'
-
-if [ `id -u` == '0' ]; then
-#  USER_COLOR=$MITSUHIKOS_RED_COLOR
-  MITSUHIKOS_USER_COLOR=$MITSUHIKOS_RED_COLOR
-else
-#  USER_COLOR=$MITSUHICOS_PINK_COLOR
-  MITSUHIKOS_USER_COLOR=$MITSUHIKOS_PINK_COLOR
-fi
-
-echo 'user color set'
-lastcommandfailed() {
-    code=$?
-    if [ $code != 0]; then
-	echo -n $'\033[37m exited \033[31m'
-	echo -n $code
-	echo -n $'\033[37m'
-    fi
-}
-echo 'lastcommandfailde set'
-mitsuhikos_backgroundjobs() {
-  jobs|python -c 'if 1:
-    import sys
-    items = ["\033[36m%s\033[37m" % x.split()[2]
-             for x in sys.stdin.read().splitlines()]
-    if items:
-      if len(items) > 2:
-        string = "%s, and %s" % (", ".join(items[:-1]), items[-1])
-      else:
-        string = ", ".join(items)
-      print "\033[37m running %s" % string
-  '
-}
-echo 'backgroundjobs set'
-export BASEPROMPT='\n\e${MITSUHIKOS_USER_COLOR}\u \
-\e${MITSUHIKOS_GRAY_COLOR}at \e${MITSUHIKOS_ORANGE_COLOR}\h \
-\e${MITSUHIKOS_GRAY_COLOR}in \e${MITSUHIKOS_GREEN_COLOR}\w\
-\e${MITSUHIKOS_DEFAULT_COLOR}'
-export PS1="${BASEPROMPT}
-$ "
-
-
-__vcs_status() {
-  if type -p __git_ps1; then
-    branch=$(__git_ps1)
-  else
-    branch=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')
-  fi
-  if [ $branch ]; then
-    # not updated
-    color="${txtpur}"
-    status=$(git status --porcelain 2> /dev/null)
-    # if we have non untracked files (blue)
-    if $(echo "$status" | grep '?? ' &> /dev/null); then
-      color="${txtblu}"
-    fi
-    #  added to index (green)
-    if $(echo "$status" | grep '^A  ' &> /dev/null); then
-      color="${txtgrn}"
-    fi
-    # updated in index (Cyan)
-    if $(echo "$status" | grep '^ M ' &> /dev/null); then
-      color="${txtcyn}"
-    fi
-    #  deleted from index (red)
-    if $(echo "$status" | grep '^ D ' &> /dev/null); then
-      color="${txtred}"
-    fi
-    echo -e $color
-  fi
-}
-
-#set PS1 = "${USER} at $(hostname) in ${PWD} on ${branch}"
-
+# most of this stuff is lifted off https://github.com/mitsuhiko/dotfiles.git
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
@@ -136,6 +24,52 @@ HISTFILESIZE=2000
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+DEFAULT_COLOR="[00m"
+GRAY_COLOR="[37m"
+PINK_COLOR="[35m"
+GREEN_COLOR="[32m"
+ORANGE_COLOR="[33m"
+RED_COLOR="[31m"
+
+if [ `id -u` == '0' ]; then
+  USER_COLOR=$RED_COLOR
+else
+  USER_COLOR=$PINK_COLOR
+fi
+
+lastcommandfailed() {
+    code=$?
+    if [ $code != 0 ]; then
+	echo -n $'\033[37m exited \033[31m'
+	echo -n $code
+	echo -n $'\033[37m'
+    fi
+}
+
+mitsuhikos_backgroundjobs() {
+  jobs|python -c 'if 1:
+    import sys
+    items = ["\033[36m%s\033[37m" % x.split()[2]
+             for x in sys.stdin.read().splitlines()]
+    if items:
+      if len(items) > 2:
+        string = "%s, and %s" % (", ".join(items[:-1]), items[-1])
+      else:
+        string = ", ".join(items)
+      print "\033[37m running %s" % string
+  '
+}
+
+export BASEPROMPT='\n\e${USER_COLOR}\u \
+\e${GRAY_COLOR}at \e${ORANGE_COLOR}\h \
+\e${GRAY_COLOR}in \e${GREEN_COLOR}\w\
+`lastcommandfailed`\
+\e${DEFAULT_COLOR}'
+export PS1="${BASEPROMPT}
+$ "
+
+
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
