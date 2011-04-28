@@ -1,0 +1,18 @@
+C		View-kill-and-leave
+C-w		kill-region
+s-^		kill-some-buffers
+s-k		kill-this-buffer
+s-x		kill-region
+<C-backspace>			backward-kill-word
+<C-insert>	kill-ring-save
+<M-mouse-3>	mouse-secondary-save-then-kill
+<S-mouse-1>	mouse-save-then-kill
+<mouse-3>	mouse-save-then-kill
+C-x C-c		save-buffers-kill-terminal
+C-x DEL		backward-kill-sentence
+C-M-w		append-next-kill
+M-k		kill-sentence
+M-DEL		backward-kill-word
+ESC <C-delete>			backward-kill-sexp
+<left-fringe> <mouse-3>		mouse-save-then-kill
+C-x r k		kill-rectangle
