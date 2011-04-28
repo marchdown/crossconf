@@ -1,1 +1,0 @@
-;(global-set-key (kbd "\C-\u434") 'forward-char)
