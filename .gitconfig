@@ -1,0 +1,18 @@
+[user]
+	name = marchdown
+	email = marchdown@gmail.com
+[color]
+	ui = true
+	pager = true
+[alias]
+	co = checkout
+	st = status
+	br = branch
+	w = whatchanged
+	cm = commit -m
+	b = branch
+	bv = branch
+[github]
+	user = marchdown
+[core]
+	editor = emacs
