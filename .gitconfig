@@ -2,12 +2,25 @@
 	name = marchdown
 	email = marchdown@gmail.com
 [color]
-	log = auto
 	graph = auto
+	log = auto
+	pager = true
 	ui = auto
 [alias]
-	s = status
-	co = checkout
+	
+=======
+
+[alias]
+	b = branch
+	c = commit
 	cb = checkout -b
 	cm = commit -m
-	
+	co = checkout
+	st = status
+	w = whatchanged
+	ra = remote add
+[github]
+	user = marchdown
+[core]
+	editor = emacs
+
