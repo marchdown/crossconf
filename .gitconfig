@@ -7,10 +7,6 @@
 	pager = true
 	ui = auto
 [alias]
-	
-=======
-
-[alias]
 	b = branch
 	c = commit
 	cb = checkout -b
