@@ -1,33 +1,16 @@
-;;;; Startup
-;;;; Pretty startup
-(setq inhibit-startup-message t)
-(defun emacs-reloaded ()
-  (animate-string (concat 
-;		   ";;loaded in " (emacs-init-time) "\n"
-		   ";;This is " (emacs-version) "\n"
-;		   (substring (emacs-version) 0 16)
-		   ";;You can do anything in Emacs. Anything at all.\n"
-		   )
-		  0 0)
-
-;  (newline-and-indent)  (newline-and-indent)
-)
-(add-hook 'after-init-hook 'emacs-reloaded)
-
+ ;;;; Startup
 ;(setq user-emacs-directory '"~/Dropbox/Emacs/")
 ;(add-to-list 'load-path "~/Dropbox/Emacs/")
 ;(add-to-list 'load-path user-emacs-directory)
-;(setq default-directory "~/Dropbox/Emacs/")
-(setq default-directory "~/.emacs.d/")
+(setq default-directory "~/Dropbox/Emacs/")
 ;;;; contents of typical subdirs.el, triplicated in each emacs installation
 (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
     (normal-top-level-add-subdirs-to-load-path))
 
 (defun init ()
   (interactive)
-  (find-file (concat default-directory "init.el")))
-(setq org-directory "~/org/")
-(setq sidelog (concat org-directory "sidelog.org"))
+  (find-file "~/Dropbox/Emacs/init.el"))
+(setq sidelog "~/Dropbox/org/sidelog.org")
 (defun sidelog ()
   (interactive)
   (find-file sidelog))
@@ -114,7 +97,7 @@
 ;                                    ("w" "org-protocol" entry (file "~/git/org/refile.org") "* TODO Review %c
 ;%U" :immediate-finish t :clock-in t :clock-resume t))))
 
-(add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
+
 (setq org-link-abbrev-alist
 '(
   ( "сбт" . "http://xenoethics.org/sbt/%s")
@@ -131,12 +114,8 @@
 (icomplete-mode 1)
 ;;;; cmd-x cmd-c cmd-v
 
-;;;; MIT Scheme
-;;; Is it even installed?!
-(setq scheme-program-name "stk")
-
 ;;;; python
-;(add-to-list 'load-path "~/Dropbox/Emacs/libs-dealing-with-python")
+(add-to-list 'load-path "~/Dropbox/Emacs/libs-dealing-with-python")
 (require 'python)
 (setq python-indent 2)
 (setq py-indent-offset 2)
@@ -150,18 +129,6 @@
 ;    (setq interpreter-mode-alist (cons '("python" . python-mode)
  ;                                      interpreter-mode-alist))
 ;    (autoload 'python-mode "python-mode" "Python editing mode." t)
-
-;;; Haskell
-;(require 'haskell-mode)
-;(require 'inf-haskell)
-;(load-file "haskell-site-file")
-;(load-file "haskell-mode/haskell-site-file")
-;(load-file "~/Dropbox/crossconf/emacs.d/haskell-mode/haskell-site-file")
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-;;; the following three lines are exclusive
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 
 
 (setq default-frame-alist '((width . 80) (height . 55)))
@@ -177,13 +144,13 @@
 
 ;;;; adapted from http://stackoverflow.com/questions/221365/emacs-lisp-how-to-add-a-folder-and-all-its-first-level-sub-folders-to-the-load-p
 
-;; (let ((base-dir "~/Dropbox/Emacs"))
-;;    (add-to-list 'load-path base-dir)
-;;    (dolist (f (directory-files base-dir))
-;;      (let ((subdir (concat base-dir "/" f)))
-;;        (when (and (file-directory-p subdir)
-;;  		 (not (equal f ".."))
-;;  		 (not (equal f ".")))
-;;  	(add-to-list 'load-path subdir)))))
+(let ((base-dir "~/Dropbox/Emacs"))
+   (add-to-list 'load-path base-dir)
+   (dolist (f (directory-files base-dir))
+     (let ((subdir (concat base-dir "/" f)))
+       (when (and (file-directory-p subdir)
+ 		 (not (equal f ".."))
+ 		 (not (equal f ".")))
+ 	(add-to-list 'load-path subdir)))))
 
 
