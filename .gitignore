@@ -1,6 +1,96 @@
-\#*\#
+.bash_history
+*log
+.cabal/*
+!.cabal/config
+#.ssh
+.dropbox
+.gem
+*history
+*cache
+*auth*
 *~
+Applications
+Chat Logs
+Desktop
+Desktop-March
+Documents
+Downloads
+Downloads-March
+Downloads-September
+Dropbox
+EGG-INFO
+IPython
+LaTeXiT-source-2_2_0.zip
+Library
+Movies
+Music
+PE Papers
+Pictures
+Public Sites
+Textbooks (out of sync)
+article1010-11-25
+auto-save-list
+cld
+elem.txt
+elem.txt~
+fubar
+fubar.txt
+getxcode
+grid-iphone-read-only
+hades
+haskell
+ex
+homework
+iPad_springboard_gesture_hack
+iTerm-2-Color-Themes
+init.el
+installd
+iphone_hackery
+libmiss.c
+libmiss.dylib
+nltk_data
+nowiki.dict
+org
+python
+rtx101101427p.pdf
+sage*
+share
+skena
+solarized
+src
+sviter
+sw
+sweepety-March
+sweepity-sweep
+tt
+unfu.py
+vanguard-test
+where dreams come true.html
+where dreams come true_files
+Учёба (не влезает в Dropbox)
+мои картинки
+руб%D0рикатор уџба
+ ц̤̥̦ац̤̥̦а
+∈.txt
+.font*
 .DS_Store
-.*history
-.*hst
-.*hist
+.pow
+Papers
+Public
+Sites
+Sweepety*
+cocoa
+code
+.leksah*
+.macports
+.dvdcss
+.Trash
+.*.xbel
+.ghc
+*dump
+*hst
+*hist
+*history*
+
+
+.ssh/
