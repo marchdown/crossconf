@@ -94,3 +94,7 @@ code
 
 
 .ssh/
+emacs-packages*
+infodump*
+emacs-packages/*
+infudomp/*
