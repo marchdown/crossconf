@@ -1,4 +1,4 @@
-
+export PATH=$PATH:/usr/local/go/
 #PS1='⚗ \W\$ '
 #PS1='⚗ \W ☽ '
 #~/hmoo-bin/bash-prompt.sh
