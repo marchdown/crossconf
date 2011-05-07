@@ -1,6 +1,6 @@
 .bash_history
 *log
-.cabal/*
+.cabal
 !.cabal/config
 #.ssh
 .dropbox
@@ -9,6 +9,28 @@
 *cache
 *auth*
 *~
+\#*
+.\#*
+.CFUserTextEncoding
+.cheat/
+freemind/
+idlerc/
+.ipython/
+.irssi/
+.yandex/
+.vagrant/
+.netbeans/
+.freemind/
+.idlerc/
+.parallels/
+.texlive2009/
+
+tabletki
+git-old/
+
+.sage/
+.recentf
+
 Applications
 Chat Logs
 Desktop
