@@ -18,5 +18,5 @@
 [github]
 	user = marchdown
 [core]
-	editor = emacs
+	editor = emacsclient
 
