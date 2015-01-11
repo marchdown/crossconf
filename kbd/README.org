@@ -1,0 +1,10 @@
+* Scope 
+This directory endevours to contain configuration and initialization files, headers, scripts, and memos having to do with making keyboard comfortably useful.
+
+** Colemak
+colemak-ctrlcaps-x11.sh
+setxkbmap us -variant colemak -option ctrl:nocaps
+colemak-ctrlcaps-linuxconsole.sh
+** Window managers
+*** DWM
+   
