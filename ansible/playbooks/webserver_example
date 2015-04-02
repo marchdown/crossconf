@@ -1,0 +1,16 @@
+---
+- hosts: marchdown.net
+  sudo: yes
+  vars:
+    http_port: 80
+    max_clients: 200
+  tasks:
+  - name: install apache2
+    apt: name=apache2 update_cache=yes state=latest
+    notify:
+    - restart apache
+  - name: ensure apache is running (and enable it at boot)
+    service: name=httpd state=started enabled=yes
+  handlers:
+    - name: restart apache2
+      service: name=apache2 state=restarted

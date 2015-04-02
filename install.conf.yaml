@@ -6,6 +6,7 @@
 - shell:
     - cp kbd/*.keylayout /Library/Keyboard\ Layouts/
 - link:
+    ~/.bashrc: bashrc
     ~/.dotfiles: ''
     ~/bin: bin/
     /etc/ansible:
