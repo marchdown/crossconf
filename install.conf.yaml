@@ -1,0 +1,13 @@
+
+
+
+- clean:
+    - "/etc/ansible"  
+- shell:
+    - cp kbd/*.keylayout /Library/Keyboard\ Layouts/
+- link:
+    ~/.dotfiles: ''
+    ~/bin: bin/
+    /etc/ansible:
+      create: true
+      path: ansible/
